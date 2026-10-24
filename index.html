@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="fc-creek-palms.webp">
   <style>
     :root{--pine:#172a20;--pine2:#243b2c;--cream:#f5f0e5;--sand:#d5b98a;--rust:#9b5738;--ink:#20261f;--muted:#6f756b;--line:rgba(32,38,31,.14)}
     *{box-sizing:border-box}
@@ -30,7 +31,7 @@
     .hero-bg{position:absolute;inset:0;background:
       linear-gradient(90deg,rgba(12,25,17,.86) 0%,rgba(12,25,17,.58) 44%,rgba(12,25,17,.18) 100%),
       linear-gradient(0deg,rgba(12,25,17,.42),transparent 55%),
-      url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=2200&q=85") center/cover;
+      url("fc-creek-palms.webp") center/cover;
       transform:scale(1.04);animation:heroSettle 1.5s ease-out both}
     .hero-inner{position:relative;max-width:1200px;width:100%;margin:auto;padding:140px 5.5% 90px}
     .eyebrow{display:flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.24em;font-size:11px;color:var(--sand);font-weight:700}
@@ -56,7 +57,7 @@
     .feature{border-top:1px solid var(--line);padding-top:15px}
     .feature strong{display:block;font-family:"Playfair Display",serif;font-size:19px;font-weight:500}
     .feature span{display:block;color:var(--muted);font-size:12px;margin-top:7px;line-height:1.6}
-    .image-panel{position:relative;min-height:430px;background:#b4a07d url("https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1100&q=85") center/cover}
+    .image-panel{position:relative;min-height:430px;background:#b4a07d url("fc-beach-lounge.webp") center/cover}
     .image-panel:after{content:"";position:absolute;inset:18px;border:1px solid #f4ead4aa;pointer-events:none}
     .image-caption{position:absolute;bottom:0;left:-20px;background:var(--pine);color:var(--cream);padding:22px 27px;max-width:230px;z-index:1}
     .image-caption small{display:block;color:var(--sand);text-transform:uppercase;letter-spacing:.17em;font-size:9px;margin-bottom:8px}
@@ -73,9 +74,9 @@
     .photo-band{padding:0;display:grid;grid-template-columns:1.2fr 1fr 1fr;min-height:290px}
     .photo-band div{background-size:cover;background-position:center;min-height:260px;position:relative}
     .photo-band div:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#10201788,transparent 65%)}
-    .photo-band .p1{background-image:url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80")}
-    .photo-band .p2{background-image:url("https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80")}
-    .photo-band .p3{background-image:url("https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=900&q=80")}
+    .photo-band .p1{background-image:url("fc-evening-shore.webp")}
+    .photo-band .p2{background-image:url("fc-fishermans-canoe.webp")}
+    .photo-band .p3{background-image:url("fc-seafood-platter.webp")}
     .gallery-cta{display:flex;align-items:center;justify-content:space-between;gap:35px}
     .gallery-cta h2{max-width:620px}
     .gallery-cta .body-copy{max-width:570px}
@@ -108,25 +109,47 @@
     }
     @keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+    .food-card{overflow:hidden;padding:0 0 25px}
+    .food-card img{display:block;width:100%;height:240px;object-fit:cover;margin-bottom:24px}
+    .food-card .number,.food-card h3,.food-card p{margin-left:25px;margin-right:25px}
+    .photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
+    .photo-tile{position:relative;border:0;padding:0;background:var(--pine);cursor:zoom-in;color:white;text-align:left;overflow:hidden;aspect-ratio:4/5}
+    .photo-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .photo-tile:hover img{transform:scale(1.04)}
+    .photo-tile span{position:absolute;bottom:0;left:0;right:0;padding:42px 18px 18px;background:linear-gradient(transparent,#102017dc);font:500 15px "DM Sans",sans-serif}
+    :focus-visible{outline:3px solid var(--rust);outline-offset:5px}
+    .lightbox{border:1px solid #ffffff40;padding:0;background:#101d15;color:var(--cream);max-width:94vw;width:min(1050px,94vw);max-height:94svh;overflow:auto}
+    .lightbox::backdrop{background:#07110ceF}
+    .lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center}
+    .lightbox img{display:block;max-width:100%;width:auto;height:72svh;object-fit:contain}
+    .lightbox figcaption{padding:18px 70px;text-align:center;font-size:14px;line-height:1.6}
+    .lightbox-controls{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #ffffff30}
+    .lightbox-controls button{background:transparent;color:var(--cream);border:1px solid #ffffff60;padding:10px 14px;cursor:pointer;font:500 13px "DM Sans",sans-serif;min-height:44px}
+    .lightbox-controls div{display:flex;gap:8px}
+    @media(max-width:760px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.food-card img{height:260px}.photo-tile span{font-size:12px;padding:35px 12px 12px}.lightbox figcaption{padding:16px 20px}.lightbox img{height:65svh}.hero-bg{background-position:60% center}}
+    @media(max-width:360px){.brand-name{font-size:12px}.brand-name small{font-size:8px}.nav{gap:8px}.photo-grid{grid-template-columns:1fr}}
+    .reveal{opacity:1;transform:none}
+    @media(prefers-reduced-motion:no-preference){.js-reveal .reveal{opacity:0;transform:translateY(22px)}.js-reveal .reveal.visible{opacity:1;transform:none}}
   </style>
 </head>
 <body>
 <header class="topbar">
   <nav class="nav" aria-label="Main navigation">
     <a class="brand" href="#home" aria-label="Fisherman's Creek home">
-      <span class="brand-mark" aria-hidden="true">♧</span>
+      <span class="brand-mark" aria-hidden="true">≈</span>
       <span class="brand-name">FISHERMAN'S CREEK<small>SERENA SIDE · MOMBASA</small></span>
     </a>
     <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
     <div class="links">
       <a href="#about">Our story</a><a href="#flavours">Flavours</a><a href="#gallery">Gallery</a><a href="#contact">Find us</a>
-      <a class="gallery-link" href="gallery.pdf" target="_blank" rel="noopener">Photo gallery ↗</a>
+      <a class="gallery-link" href="#gallery">Explore the Creek ↗</a>
     </div>
   </nav>
 </header>
 <main>
   <section class="hero" id="home">
-    <div class="hero-bg" role="img" aria-label="Warm rustic restaurant atmosphere"></div>
+    <div class="hero-bg" role="img" aria-label="Palm trees and the beach at Fisherman’s Creek"></div>
     <div class="hero-inner">
       <div class="eyebrow">Coastal character · Mombasa, Kenya</div>
       <h1>Good food.<br><em>Good company.</em><br>Creekside soul.</h1>
@@ -146,11 +169,11 @@
         <h2>Rooted in the coast.<br>Made for gathering.</h2>
         <p class="body-copy">Welcome to Fisherman's Creek, Serena Side — a casual bar in Mombasa where the mood is easy and the coast sets the pace. Come by for a relaxed catch-up, something from the grill, and a little more time around the table.</p>
         <div class="feature-list">
-          <div class="feature"><strong>Fresh-from-the-grill spirit</strong><span>Grilled favourites and seafood are mentioned in public visitor listings.</span></div>
+          <div class="feature"><strong>Fresh-from-the-grill spirit</strong><span>Seafood, grilled fish and plates made for sharing.</span></div>
           <div class="feature"><strong>Easygoing atmosphere</strong><span>A casual place to meet friends and unwind.</span></div>
         </div>
       </div>
-      <div class="image-panel reveal" role="img" aria-label="Restaurant dining atmosphere">
+      <div class="image-panel reveal" role="img" aria-label="Colourful beach seating beneath the palms at Fisherman’s Creek">
         <div class="image-caption"><small>Fisherman's Creek</small><strong>Find your moment by the coast.</strong></div>
       </div>
     </div>
@@ -160,24 +183,38 @@
     <div class="wrap reveal">
       <div class="section-label">From the grill & beyond</div>
       <h2>Flavours worth<br>staying for.</h2>
-      <p class="body-copy" style="max-width:590px">Public visitor listings mention grilled dishes, seafood and grilled octopus. Ask the team what is available today — this site does not publish an unverified menu or prices.</p>
+      <p class="body-copy" style="max-width:590px">Grilled fish, octopus and seafood platters, with the creek just steps away. Take a look at our dishes below and ask the team what is available today.</p>
       <div class="food-grid">
-        <article class="food-card"><span class="number">01 / THE GRILL</span><h3>Grilled favourites</h3><p>Follow the smoke and settle in for a relaxed meal.</p></article>
-        <article class="food-card"><span class="number">02 / FROM THE SEA</span><h3>Seafood spirit</h3><p>Coastal flavours and seafood are part of the public listings.</p></article>
-        <article class="food-card"><span class="number">03 / GOOD COMPANY</span><h3>Stay a little</h3><p>Catch up with friends and enjoy the easygoing atmosphere.</p></article>
+        <article class="food-card"><img src="fc-grilled-fish.webp" alt="Grilled fish served with salad and lemon" width="1200" height="1600" loading="lazy" decoding="async"><span class="number">01 / THE GRILL</span><h3>Grilled favourites</h3><p>Follow the smoke and settle in for a relaxed meal.</p></article>
+        <article class="food-card"><img src="fc-seafood-platter.webp" alt="A sharing platter of grilled fish and seafood" width="1280" height="960" loading="lazy" decoding="async"><span class="number">02 / FROM THE SEA</span><h3>Seafood spirit</h3><p>Fish, octopus and seafood platters to enjoy by the coast.</p></article>
+        <article class="food-card"><img src="fc-grilled-octopus.webp" alt="Grilled octopus with fresh salad and lemon" width="960" height="1280" loading="lazy" decoding="async"><span class="number">03 / COASTAL FAVOURITES</span><h3>Octopus from the grill</h3><p>A plate to savour slowly, with fresh salad and a squeeze of lemon.</p></article>
       </div>
     </div>
   </section>
 
-  <div class="photo-band" aria-label="Coastal dining inspiration">
-    <div class="p1" role="img" aria-label="Warm bar interior"></div><div class="p2" role="img" aria-label="Outdoor dining"></div><div class="p3" role="img" aria-label="Relaxed restaurant setting"></div>
+  <div class="photo-band" aria-label="Scenes from Fisherman’s Creek">
+    <div class="p1" role="img" aria-label="The creek shore at sunset"></div><div class="p2" role="img" aria-label="The Fisherman’s Creek canoe on the beach"></div><div class="p3" role="img" aria-label="A seafood sharing platter at Fisherman’s Creek"></div>
   </div>
 
   <section id="gallery">
     <div class="wrap gallery-cta reveal">
-      <div><div class="section-label">See the place</div><h2>A closer look at the Creek.</h2><p class="body-copy">Browse the photo gallery or visit Instagram for the latest public posts and updates.</p></div>
-      <div class="actions"><a class="btn btn-primary" href="gallery.pdf" target="_blank" rel="noopener">Open photo gallery PDF ↗</a><a class="btn" style="border:1px solid var(--line)" href="https://www.instagram.com/fishermans.creek/" target="_blank" rel="noopener">Instagram ↗</a></div>
+      <div><div class="section-label">See the place</div><h2>A closer look at the Creek.</h2><p class="body-copy">From palm-shaded afternoons to sunset by the water — explore real moments and dishes from Fisherman’s Creek. Tap any photo for a closer look.</p></div>
+      <div class="actions"><a class="btn btn-primary" href="#photo-grid">View our photos ↓</a><a class="btn" style="border:1px solid var(--line)" href="https://www.instagram.com/fishermans.creek/" target="_blank" rel="noopener">Instagram ↗</a></div>
     </div>
+<div class="wrap"><div class="photo-grid" id="photo-grid">
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Sunset over the creek"><img src="fc-creek-sunset.webp" alt="Sunset over the creek" width="685" height="1005" loading="lazy" decoding="async"><span>Sunset over the creek ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Under the palms"><img src="fc-beach-lounge.webp" alt="Under the palms" width="960" height="1280" loading="lazy" decoding="async"><span>Under the palms ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Seafood to share"><img src="fc-seafood-platter.webp" alt="Seafood to share" width="1280" height="960" loading="lazy" decoding="async"><span>Seafood to share ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Evening by the water"><img src="fc-evening-shore.webp" alt="Evening by the water" width="586" height="719" loading="lazy" decoding="async"><span>Evening by the water ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: A little Creek character"><img src="fc-fishermans-canoe.webp" alt="A little Creek character" width="718" height="935" loading="lazy" decoding="async"><span>A little Creek character ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Octopus from the grill"><img src="fc-grilled-octopus.webp" alt="Octopus from the grill" width="960" height="1280" loading="lazy" decoding="async"><span>Octopus from the grill ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Room to slow down"><img src="fc-palm-beach.webp" alt="Room to slow down" width="960" height="1280" loading="lazy" decoding="async"><span>Room to slow down ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: A seat in the shade"><img src="fc-garden-swing.webp" alt="A seat in the shade" width="659" height="805" loading="lazy" decoding="async"><span>A seat in the shade ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Afternoons on the sand"><img src="fc-beach-volleyball.webp" alt="Afternoons on the sand" width="960" height="1280" loading="lazy" decoding="async"><span>Afternoons on the sand ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Your view for the afternoon"><img src="fc-creek-seating.webp" alt="Your view for the afternoon" width="719" height="922" loading="lazy" decoding="async"><span>Your view for the afternoon ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Fresh from the grill"><img src="fc-grilled-fish.webp" alt="Fresh from the grill" width="1200" height="1600" loading="lazy" decoding="async"><span>Fresh from the grill ↗</span></button>
+<button class="photo-tile" type="button" aria-label="Enlarge photo: Welcome to the Creek"><img src="fc-creek-palms.webp" alt="Welcome to the Creek" width="689" height="512" loading="lazy" decoding="async"><span>Welcome to the Creek ↗</span></button>
+</div></div>
   </section>
 
   <section id="contact">
@@ -193,15 +230,44 @@
     </div>
   </section>
 </main>
+<dialog class="lightbox" aria-labelledby="photo-caption">
+  <div class="lightbox-controls"><span id="photo-count" aria-live="polite"></span><div><button type="button" id="photo-prev" aria-label="Previous photo">←</button><button type="button" id="photo-next" aria-label="Next photo">→</button><button type="button" id="photo-close">Close ×</button></div></div>
+  <figure><img id="photo-full" alt=""><figcaption id="photo-caption" aria-live="polite"></figcaption></figure>
+</dialog>
 <footer><div class="footer-inner"><span>© <span id="year"></span> Fisherman's Creek · Serena Side, Mombasa</span><span>Coastal character, good company. <a href="#home">Back to top ↑</a></span></div></footer>
 <script>
   const toggle=document.querySelector('.menu-toggle');
   const links=document.querySelector('.links');
   toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰';toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')});
-  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';toggle.setAttribute('aria-label','Open navigation menu')}));
   document.getElementById('year').textContent=new Date().getFullYear();
-  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  if ('IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-reveal');
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  }
+  const lightbox=document.querySelector('.lightbox');
+  const tiles=Array.from(document.querySelectorAll('.photo-tile'));
+  let activePhoto=0;
+  function showPhoto(index){
+    activePhoto=(index+tiles.length)%tiles.length;
+    const source=tiles[activePhoto].querySelector('img');
+    const full=document.getElementById('photo-full');
+    full.src=source.src;full.alt=source.alt;
+    document.getElementById('photo-caption').textContent=source.alt;
+    document.getElementById('photo-count').textContent=`${activePhoto+1} / ${tiles.length}`;
+  }
+  if (typeof lightbox.showModal==='function') {
+    tiles.forEach((tile,index)=>tile.addEventListener('click',()=>{showPhoto(index);lightbox.showModal();document.body.style.overflow='hidden';document.getElementById('photo-close').focus()}));
+    lightbox.addEventListener('close',()=>{document.body.style.overflow='';tiles[activePhoto].focus()});
+    document.getElementById('photo-close').addEventListener('click',()=>lightbox.close());
+    document.getElementById('photo-prev').addEventListener('click',()=>showPhoto(activePhoto-1));
+    document.getElementById('photo-next').addEventListener('click',()=>showPhoto(activePhoto+1));
+    lightbox.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();showPhoto(activePhoto-1)}if(event.key==='ArrowRight'){event.preventDefault();showPhoto(activePhoto+1)}});
+    lightbox.addEventListener('click',event=>{if(event.target===lightbox)lightbox.close()});
+  } else {
+    tiles.forEach(tile=>tile.addEventListener('click',()=>window.open(tile.querySelector('img').src,'_blank','noopener')));
+  }
 </script>
 </body>
 </html>
