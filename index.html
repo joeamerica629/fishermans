@@ -116,13 +116,13 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 
     .food-card{overflow:hidden;padding:0 0 25px}
-    .food-card img{display:block;width:100%;height:240px;object-fit:cover;margin-bottom:24px}
+    .food-card img{display:block;width:100%;height:320px;object-fit:contain;background:var(--cream);margin-bottom:24px}
     .food-card .number,.food-card h3,.food-card p{margin-left:25px;margin-right:25px}
-    .photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
-    .photo-tile{position:relative;border:0;padding:0;background:var(--pine);cursor:zoom-in;color:white;text-align:left;overflow:hidden;aspect-ratio:4/5}
-    .photo-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .photo-tile:hover img{transform:scale(1.04)}
-    .photo-tile span{position:absolute;bottom:0;left:0;right:0;padding:42px 18px 18px;background:linear-gradient(transparent,#102017dc);font:500 15px "DM Sans",sans-serif}
+    .photo-grid{columns:3;column-gap:16px;margin-top:42px}
+    .photo-tile{display:inline-block;vertical-align:top;width:100%;margin:0 0 16px;break-inside:avoid;position:relative;border:0;padding:0;background:var(--pine);cursor:zoom-in;color:white;text-align:left;overflow:hidden}
+    .photo-tile img{display:block;width:100%;height:auto}
+    .photo-tile:hover span{color:var(--sand)}
+    .photo-tile span{display:block;padding:16px 18px;background:var(--pine);font:500 15px "DM Sans",sans-serif}
     :focus-visible{outline:3px solid var(--rust);outline-offset:5px}
     .lightbox{border:1px solid #ffffff40;padding:0;background:#101d15;color:var(--cream);max-width:94vw;width:min(1050px,94vw);max-height:94svh;overflow:auto}
     .lightbox::backdrop{background:#07110ceF}
@@ -132,10 +132,20 @@
     .lightbox-controls{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #ffffff30}
     .lightbox-controls button{background:transparent;color:var(--cream);border:1px solid #ffffff60;padding:10px 14px;cursor:pointer;font:500 13px "DM Sans",sans-serif;min-height:44px}
     .lightbox-controls div{display:flex;gap:8px}
-    @media(max-width:760px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.food-card img{height:260px}.photo-tile span{font-size:12px;padding:35px 12px 12px}.lightbox figcaption{padding:16px 20px}.lightbox img{height:65svh}.hero-bg{background-position:60% center}}
-    @media(max-width:360px){.brand-name{font-size:12px}.brand-name small{font-size:8px}.nav{gap:8px}.photo-grid{grid-template-columns:1fr}}
+    @media(max-width:760px){.photo-grid{columns:2;column-gap:10px}.photo-tile{margin-bottom:10px}.food-card img{height:auto}.photo-tile span{font-size:12px;padding:12px}.lightbox figcaption{padding:16px 20px}.lightbox img{height:65svh}.hero-bg{background-position:60% center}}
+    @media(max-width:360px){.brand-name{font-size:12px}.brand-name small{font-size:8px}.nav{gap:8px}.photo-grid{columns:1}}
     .reveal{opacity:1;transform:none}
     @media(prefers-reduced-motion:no-preference){.js-reveal .reveal{opacity:0;transform:translateY(22px)}.js-reveal .reveal.visible{opacity:1;transform:none}}
+    .image-panel{min-height:0;background:var(--pine)}
+    .image-panel>img{display:block;width:100%;height:auto}
+    .image-panel:after{display:none}
+    .image-caption{position:static;max-width:none;padding:22px 27px}
+    .photo-band{min-height:0;gap:2px;background:var(--pine);grid-template-columns:repeat(3,minmax(0,1fr))}
+    .photo-band div{min-height:0;background:none}
+    .photo-band div:after{display:none}
+    .photo-band img{display:block;width:100%;height:clamp(220px,32vw,440px);object-fit:contain}
+    .hero-bg{background-position:center bottom}
+    @media(max-width:760px){.photo-band{grid-template-columns:1fr 1fr}.photo-band .p1{grid-column:span 1}.photo-band .p3{grid-column:span 2}.photo-band img{height:260px}.photo-band .p3 img{height:auto}.image-panel{min-height:0;margin-left:0}.hero-bg{background-position:60% bottom}}
   </style>
 </head>
 <body>
@@ -178,7 +188,7 @@
           <div class="feature"><strong>Easygoing atmosphere</strong><span>A casual place to meet friends and unwind.</span></div>
         </div>
       </div>
-      <div class="image-panel reveal" role="img" aria-label="Colourful beach seating beneath the palms at Fisherman’s Creek">
+      <div class="image-panel reveal"><img src="fc-beach-lounge.webp" alt="Colourful beach seating beneath the palms at Fisherman’s Creek" width="960" height="1280" loading="lazy" decoding="async">
         <div class="image-caption"><small>Fisherman's Creek</small><strong>Find your moment by the coast.</strong></div>
       </div>
     </div>
@@ -198,7 +208,7 @@
   </section>
 
   <div class="photo-band" aria-label="Scenes from Fisherman’s Creek">
-    <div class="p1" role="img" aria-label="The creek shore at sunset"></div><div class="p2" role="img" aria-label="The Fisherman’s Creek canoe on the beach"></div><div class="p3" role="img" aria-label="A seafood sharing platter at Fisherman’s Creek"></div>
+    <div class="p1"><img src="fc-evening-shore.webp" alt="The creek shore at sunset" width="586" height="719" loading="lazy" decoding="async"></div><div class="p2"><img src="fc-fishermans-canoe.webp" alt="The Fisherman’s Creek canoe on the beach" width="718" height="935" loading="lazy" decoding="async"></div><div class="p3"><img src="fc-seafood-platter.webp" alt="A seafood sharing platter at Fisherman’s Creek" width="1280" height="960" loading="lazy" decoding="async"></div>
   </div>
 
   <section id="gallery">
@@ -224,11 +234,11 @@
 
   <section id="contact">
     <div class="wrap contact-grid">
-      <div class="reveal"><div class="section-label">Come on by</div><h2>Find your way<br>to the Creek.</h2><p class="body-copy">Fisherman's Creek Serena Side, Mombasa, Kenya. Use the map link for directions and call ahead to confirm details before travelling.</p>
+      <div class="reveal"><div class="section-label">Come on by</div><h2>Find your way<br>to the Creek.</h2><p class="body-copy">Fisherman's Creek Serena Side, Mombasa, Kenya. Find us by the creek. Follow the map for directions or give us a call.</p>
         <div class="actions"><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Fisherman%27s+Creek+Serena+Side+Mombasa" target="_blank" rel="noopener">Get directions ↗</a></div>
       </div>
       <div class="reveal">
-        <div class="contact-card"><small>Call the bar · please confirm</small><a href="tel:+254791319846">+254 791 319 846</a><p style="font-size:12px;color:var(--muted);margin-top:5px">Number from the current Google business listing; please confirm before publishing.</p></div>
+        <div class="contact-card"><small>Call the bar</small><a href="tel:+254791319846">+254 791 319 846</a></div>
         <div class="contact-card"><small>Instagram</small><a href="https://www.instagram.com/fishermans.creek/" target="_blank" rel="noopener">@fishermans.creek ↗</a></div>
         <div class="contact-card"><small>Location</small><p>Serena Side, Mombasa, Kenya</p></div>
       </div>
@@ -239,7 +249,7 @@
   <div class="lightbox-controls"><span id="photo-count" aria-live="polite"></span><div><button type="button" id="photo-prev" aria-label="Previous photo">←</button><button type="button" id="photo-next" aria-label="Next photo">→</button><button type="button" id="photo-close">Close ×</button></div></div>
   <figure><img id="photo-full" alt=""><figcaption id="photo-caption" aria-live="polite"></figcaption></figure>
 </dialog>
-<footer><div class="footer-inner"><span class="footer-brand"><img src="fishermans-logo.png" alt="Fisherman’s Creek logo" width="56" height="56" loading="lazy"> <span>© <span id="year"></span> Fisherman's Creek · Serena Side, Mombasa</span></span><span>Coastal character, good company. <a href="#home">Back to top ↑</a></span></div></footer>
+<footer><div class="footer-inner"><span class="footer-brand"><img src="fishermans-logo.png" alt="Fisherman’s Creek logo" width="56" height="56" loading="lazy"> <span>© <span id="year"></span> Fisherman's Creek · Serena Side, Mombasa</span></span><span><a href="https://kitonyo.com" target="_blank" rel="noopener">Created by Kitonyo</a> · <a href="#home">Back to top ↑</a></span></div></footer>
 <script>
   const toggle=document.querySelector('.menu-toggle');
   const links=document.querySelector('.links');
